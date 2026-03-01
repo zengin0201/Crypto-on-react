@@ -1,173 +1,157 @@
 :root {
-  --bg-color: #0b0e11;
-  --card-bg: rgba(255, 255, 255, 0.05);
-  --accent-color: #00ffcc; /* Неоновый зеленый */
-  --text-main: #ffffff;
-  --text-dim: #848e9c;
-  --danger: #ff3b3b;
-  --success: #0ecb81;
+  --bg-main: #0C0D10;
+  --bg-card: #1A1D23;
+  --bg-hover: #23252B;
+  --accent: #FFDD2D;
+  --text-primary: #F0F2F5;
+  --text-secondary: #9BA3AF;
+  --border: #23252B;
+  --up: #00B92D;
+  --down: #FF4B5F;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  font-family: 'Inter', sans-serif;
-  -webkit-font-smoothing: antialiased;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, sans-serif;
+  overflow-x: hidden;
 }
 
-/* Контейнер приложения */
 .app-container {
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* Стилизация поиска */
+.header h1 {
+  font-size: 32px;
+  font-weight: 800;
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+
 .search-input {
   width: 100%;
-  padding: 15px 25px;
-  background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px 24px;
   color: white;
-  font-size: 1.1rem;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-  margin-bottom: 30px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  margin-bottom: 24px;
 }
 
 .search-input:focus {
   outline: none;
-  border-color: var(--accent-color);
-  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+  border-color: var(--accent);
+  background: var(--bg-hover);
 }
 
-/* Карточка монеты */
-.coin-card {
-  display: grid;
-  grid-template-columns: 0.5fr 2fr 1fr 1fr 1.2fr;
-  align-items: center;
-  padding: 20px;
-  background: var(--card-bg);
-  border-radius: 16px;
-  margin-bottom: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: transform 0.2s ease, background 0.2s ease;
-  backdrop-filter: blur(5px);
-}
-
-.coin-card:hover {
-  transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.coin-card img {
-  width: 35px;
-  height: 35px;
-  margin-right: 15px;
-}
-
-.coin-symbol {
-  text-transform: uppercase;
-  color: var(--text-dim);
-  font-weight: 600;
-  margin-left: 8px;
-}
-
-.price-up { color: var(--success); }
-.price-down { color: var(--danger); }
-
-/* Кнопки сортировки */
-.sort-container {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.sort-btn {
-  background: transparent;
-  border: 1px solid var(--text-dim);
-  color: var(--text-dim);
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  transition: 0.2s;
-}
-
-.sort-btn:hover, .sort-btn.active {
-  border-color: var(--accent-color);
-  color: var(--accent-color);
-}
-/* Контейнер для кнопок */
-.sort-container {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin-bottom: 25px;
-  padding: 0 5px;
-}
-
-.sort-label {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  font-weight: 500;
-}
 
 .sort-buttons {
   display: flex;
-  gap: 10px;
+  gap: 12px;
+  margin-bottom: 32px;
+  overflow-x: auto;
+  padding-bottom: 8px;
 }
 
-/* Сами кнопки */
 .sort-btn {
-  background: var(--card-bg);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-main);
-  padding: 8px 16px;
-  border-radius: 10px;
+  background: var(--bg-card);
+  border: none;
+  color: var(--text-primary);
+  padding: 10px 20px;
+  border-radius: 20px;
   cursor: pointer;
-  font-size: 0.85rem;
   font-weight: 600;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(5px);
+  font-size: 14px;
+  white-space: nowrap;
 }
 
-/* Эффект при наведении */
-.sort-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: var(--accent-color);
-}
-
-/* Стиль для активной кнопки */
 .sort-btn.active {
-  background: var(--accent-color);
-  color: var(--bg-color); /* Темный текст на ярком фоне */
-  border-color: var(--accent-color);
-  box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+  background: var(--accent);
+  color: #000;
 }
+
+
+.coin-card {
+  display: flex;
+  align-items: center;
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.coin-card:hover {
+  background: var(--bg-hover);
+  transform: translateY(-2px);
+}
+
+.coin-card img {
+  width: 44px;
+  height: 44px;
+  margin-right: 16px;
+}
+
+.coin-info {
+  flex-grow: 1;
+}
+
+.coin-name {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.coin-symbol {
+  color: var(--text-secondary);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.coin-stats {
+  text-align: right;
+}
+
+.coin-price {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.coin-percent {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.coin-percent.up {
+  color: var(--up);
+}
+
+.coin-percent.down {
+  color: var(--down);
+}
+
 
 .fav-btn {
   background: none;
   border: none;
-  color: var(--text-dim);
-  font-size: 1.5rem;
+  color: var(--text-secondary);
+  font-size: 24px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.fav-btn:hover {
-  transform: scale(1.2);
-  color: var(--accent-color);
+  margin-left: 20px;
+  padding: 0;
 }
 
 .fav-btn.active {
-  color: #ffcc00; /* Золотой цвет для избранного */
-  text-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+  color: var(--accent);
 }
