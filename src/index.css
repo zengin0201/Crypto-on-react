@@ -1,0 +1,173 @@
+:root {
+  --bg-color: #0b0e11;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --accent-color: #00ffcc; /* Неоновый зеленый */
+  --text-main: #ffffff;
+  --text-dim: #848e9c;
+  --danger: #ff3b3b;
+  --success: #0ecb81;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Контейнер приложения */
+.app-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+/* Стилизация поиска */
+.search-input {
+  width: 100%;
+  padding: 15px 25px;
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: white;
+  font-size: 1.1rem;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+}
+
+/* Карточка монеты */
+.coin-card {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1.2fr;
+  align-items: center;
+  padding: 20px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, background 0.2s ease;
+  backdrop-filter: blur(5px);
+}
+
+.coin-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.coin-card img {
+  width: 35px;
+  height: 35px;
+  margin-right: 15px;
+}
+
+.coin-symbol {
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.price-up { color: var(--success); }
+.price-down { color: var(--danger); }
+
+/* Кнопки сортировки */
+.sort-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.sort-btn {
+  background: transparent;
+  border: 1px solid var(--text-dim);
+  color: var(--text-dim);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.sort-btn:hover, .sort-btn.active {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+/* Контейнер для кнопок */
+.sort-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  padding: 0 5px;
+}
+
+.sort-label {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.sort-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Сами кнопки */
+.sort-btn {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-main);
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(5px);
+}
+
+/* Эффект при наведении */
+.sort-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--accent-color);
+}
+
+/* Стиль для активной кнопки */
+.sort-btn.active {
+  background: var(--accent-color);
+  color: var(--bg-color); /* Темный текст на ярком фоне */
+  border-color: var(--accent-color);
+  box-shadow: 0 0 15px rgba(0, 255, 204, 0.3);
+}
+
+.fav-btn {
+  background: none;
+  border: none;
+  color: var(--text-dim);
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fav-btn:hover {
+  transform: scale(1.2);
+  color: var(--accent-color);
+}
+
+.fav-btn.active {
+  color: #ffcc00; /* Золотой цвет для избранного */
+  text-shadow: 0 0 10px rgba(255, 204, 0, 0.4);
+}
