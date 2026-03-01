@@ -66,64 +66,74 @@ function App() {
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
   };
   return (
-    <div className="app-container">
-      <h1 style={{ color: "white", textAlign: "center", marginBottom: "20px" }}>
-        Crypto Tracker
-      </h1>
-
-      <input
-        type="text"
-        placeholder="Поиск монеты (напр. Bitcoin)..."
-        className="search-input"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-      <div className="sort-container">
-        <span className="sort-label">Сортировать по:</span>
-        <div className="sort-buttons">
-          <button
-            className={sort === "price" ? "sort-btn active" : "sort-btn"}
-            onClick={() => sortType("price")}
-          >
-            Цене
-          </button>
-          <button
-            className={sort === "name" ? "sort-btn active" : "sort-btn"}
-            onClick={() => sortType("name")}
-          >
-            Названию
-          </button>
-          <button
-            className={sort === "precent" ? "sort-btn active" : "sort-btn"}
-            onClick={() => sortType("precent")}
-          >
-            Изменению %
-          </button>
-          <button
-            className={showOnlyFavs ? "sort-btn active" : "sort-btn"}
-            onClick={() => setShowOnlyFavs(!showOnlyFavs)}
-          >
-            {showOnlyFavs ? "Все монеты" : "Избранное ★"}
-          </button>
+    <div className="app-wrapper">
+      
+      <header className="header" style={{display:"flex",justifyContent:"center",marginTop:"15px"}}>
+        <div className="header-content">
+          <div style={{ display: 'flex', alignItems: 'center', }}>
+            <div className="logo-box" style={{ background: 'var(--accent)', padding: '8px', borderRadius: '10px' }}>
+              <span style={{ color: '#000', fontWeight: 'bold' }}>T</span>
+            </div>
+            <h1 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 800 }}>CryptoFlow</h1>
+          </div>
+          <div className="market-status">
+            <div className="pulse"></div>
+            Live Market
+          </div>
         </div>
+      </header>
+
+      <div className="app-container">
+        <div className="controls-panel">
+          <input
+            type="text"
+            placeholder="Search assets..."
+            className="search-input"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          
+          <div className="sort-container" style={{ marginTop: '20px' }}>
+            <span className="sort-label">Sort by:</span>
+            <div className="sort-buttons">
+              {['price', 'name', 'precent'].map(type => (
+                <button
+                  key={type}
+                  className={sort === type ? "sort-btn active" : "sort-btn"}
+                  onClick={() => sortType(type)}
+                >
+                  {type === 'price' ? 'Price' : type === 'name' ? 'Name' : 'Change %'}
+                </button>
+              ))}
+              <button
+                className={showOnlyFavs ? "sort-btn active" : "sort-btn"}
+                onClick={() => setShowOnlyFavs(!showOnlyFavs)}
+                style={{ marginLeft: 'auto' }}
+              >
+                {showOnlyFavs ? "★ Favorites" : "All Assets"}
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {loading ? (
+          <div className="loader-container" style={{ textAlign: 'center', padding: '100px' }}>
+             <div className="pulse" style={{ width: '40px', height: '40px', margin: '0 auto' }}></div>
+             <p style={{ marginTop: '20px', color: 'var(--text-dim)' }}>Syncing with Blockchain...</p>
+          </div>
+        ) : (
+          <div className="coin-list">
+            {sortedCoins.map((coin) => (
+              <CoinCard
+                key={coin.id}
+                coin={coin}
+                onFavClick={toggleFavorite}
+                isFav={favorites.includes(coin.id)}
+              />
+            ))}
+          </div>
+        )}
       </div>
-
-      {loading ? (
-        <h1 style={{ color: "white", textAlign: "center" }}>
-          Загрузка данных...
-        </h1>
-      ) : (
-        <div className="coin-list">
-          {sortedCoins.map((coin) => (
-            <CoinCard
-              key={coin.id}
-              coin={coin}
-              onFavClick={toggleFavorite}
-              isFav={favorites.includes(coin.id)}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 }
