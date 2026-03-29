@@ -2,6 +2,9 @@
 
 A modern, high-performance cryptocurrency tracking dashboard built with React. CryptoFlow provides a real-time window into the blockchain market, featuring advanced sorting, filtering, and a persistent "Favorites" system.
 
+## 📸 Preview
+<img width="1676" height="1267" alt="image" src="https://github.com/user-attachments/assets/c1d811d7-bdb3-4e06-acd0-c3bd283c6857" />
+
 
 ## 🚀 Professional Features
 
